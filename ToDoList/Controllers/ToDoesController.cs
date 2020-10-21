@@ -21,7 +21,7 @@ namespace ToDoList.Controllers
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
 
-            return View(db.ToDos.ToList().Where(x => x.User == currentUser));
+            return View(db.ToDoes.ToList().Where(x => x.User == currentUser));
         }
 
         public ActionResult BuildToDoTable()
@@ -29,7 +29,7 @@ namespace ToDoList.Controllers
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
 
-            return PartialView("_ToDoTable", db.ToDos.ToList().Where(x => x.User == currentUser));
+            return PartialView("_ToDoTable", db.ToDoes.ToList().Where(x => x.User == currentUser));
         }
 
         // GET: ToDoes/Details/5
@@ -39,7 +39,7 @@ namespace ToDoList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ToDo toDo = db.ToDos.Find(id);
+            ToDo toDo = db.ToDoes.Find(id);
             if (toDo == null)
             {
                 return HttpNotFound();
@@ -66,7 +66,7 @@ namespace ToDoList.Controllers
                 ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
 
                 toDo.User = currentUser;
-                db.ToDos.Add(toDo);
+                db.ToDoes.Add(toDo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -81,7 +81,7 @@ namespace ToDoList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ToDo toDo = db.ToDos.Find(id);
+            ToDo toDo = db.ToDoes.Find(id);
             if (toDo == null)
             {
                 return HttpNotFound();
@@ -112,7 +112,7 @@ namespace ToDoList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ToDo toDo = db.ToDos.Find(id);
+            ToDo toDo = db.ToDoes.Find(id);
             if (toDo == null)
             {
                 return HttpNotFound();
@@ -125,8 +125,8 @@ namespace ToDoList.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ToDo toDo = db.ToDos.Find(id);
-            db.ToDos.Remove(toDo);
+            ToDo toDo = db.ToDoes.Find(id);
+            db.ToDoes.Remove(toDo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
