@@ -1,8 +1,8 @@
 ﻿$(document).ready(function () {
     $.ajax({
-        url: '/ToDoes/BuildToDoTable',
+        url: "~/ToDoes/BuildToDoTable",
         success: function (result) {
-            $('#tableDiv').html(result);
+            $("#tableDiv").get(0);
         }
     });
 });

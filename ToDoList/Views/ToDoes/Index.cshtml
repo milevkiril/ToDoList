@@ -9,9 +9,25 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<div id="tableDiv"> </div>
+
+<div id="tableDiv"></div>
+
+<button onclick="createNew()">Create new task</button>
+
+<button onclick="viewAll()">View all tasks</button>
 
 @section Scripts{
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/CustomScripts/BuildTable.js"></script>
 }
+
+<script>
+    function viewAll() {
+        $("#tableDiv").load("/ToDoes/BuildToDoTable");
+    }
+
+    function createNew() {
+        $("#tableDiv").load("/ToDoes/CreatePartial");
+    }
+</script>
+
