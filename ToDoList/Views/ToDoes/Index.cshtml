@@ -4,16 +4,18 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Here you can find all to does and create new</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 
 <div id="tableDiv"></div>
-
 <button onclick="createNew()">Create new task</button>
 
+<div></div>
+
+<div id="createTasks"></div>
 <button onclick="viewAll()">View all tasks</button>
 
 @section Scripts{
@@ -27,7 +29,7 @@
     }
 
     function createNew() {
-        $("#tableDiv").load("/ToDoes/CreatePartial");
+        $("#createTasks").load("/ToDoes/Create");
     }
 </script>
 
