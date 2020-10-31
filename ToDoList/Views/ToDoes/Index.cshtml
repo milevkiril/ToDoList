@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ToDoList.Models.ToDo>
+﻿@model ToDoList.Models.ToDo
 
 @{
     ViewBag.Title = "Index";
@@ -7,20 +7,39 @@
 <h2>Here you can find all to does and create new</h2>
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
 
 <div id="tableDiv"></div>
-<button onclick="createNew()">Create new task</button>
+<button onclick="viewAll()">View all tasks</button>
 
 <div></div>
 
-<div id="createTasks"></div>
-<button onclick="viewAll()">View all tasks</button>
+<div id="createTasks">
+    @using (Ajax.BeginForm("AJAXCreate", "ToDoes", new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        UpdateTargetId = "tableDiv"
+    }))
+    {
+        
+    <div class="form-group">
+        @Html.AntiForgeryToken()
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    }
+</div>
+@*<button onclick="createNew()">Create new task</button>*@
 
 @section Scripts{
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/CustomScripts/BuildTable.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
 }
 
 <script>
