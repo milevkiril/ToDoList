@@ -97,6 +97,7 @@ namespace ToDoList.Controllers
             }
 
             return PartialView("_ToDoTable", GetMyToDoes());
+            //return RedirectToAction("Index");
         }
 
         // GET: ToDoes/Edit/5

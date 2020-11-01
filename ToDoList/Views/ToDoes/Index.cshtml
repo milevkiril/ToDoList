@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Here you can find all to does and create new</h2>
+<h2>Here you can find all tasks and create new one</h2>
 
 @*<p>
         @Html.ActionLink("Create New", "Create")
@@ -23,10 +23,9 @@
         UpdateTargetId = "tableDiv"
     }))
     {
-        
+    <h3>Create new task:</h3>    
     <div class="form-group">
         @Html.AntiForgeryToken()
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
@@ -48,7 +47,7 @@
     }
 
     function createNew() {
-        $("#createTasks").load("/ToDoes/Create");
+        $("#createTasks").load("/ToDoes/AJAXCreate");
     }
 </script>
 

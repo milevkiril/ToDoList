@@ -7,9 +7,11 @@
                @Html.DisplayNameFor(model => model.Description)
            </th>
            <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.IsDone)
            </th>
-            <th></th>
+            <th>
+                @Html.DisplayName("Actions")
+            </th>
        </tr>
     @foreach(var item in Model)
     {
